@@ -1,0 +1,5 @@
+{
+  "svelte.enable-ts-plugin": true,
+  "html.customData": ["./node_modules/vidstack/vscode.html-data.json"],
+  "biome.enabled": false
+}
