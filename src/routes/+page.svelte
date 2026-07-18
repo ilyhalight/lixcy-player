@@ -82,7 +82,6 @@
   }
 
   async function getPageData(sectionId?: string) {
-    await new Promise((resolve) => setTimeout(resolve, 20000));
     const sections = await LixcyRelay.getSections();
     if (!sections) {
       throw new Error("Failed to load sections data");
@@ -149,7 +148,9 @@
 
 <section class="player-page">
   {#await getPageData(tab)}
-    <LoadingIndicator title="loading page data..." />
+    <div class="player-loading">
+      <LoadingIndicator title="loading page data..." />
+    </div>
   {:then data}
     <div class="player-tabs">
       <Tabs items={data.tabs} bind:tab />
@@ -196,6 +197,15 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .player-loading {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .player-tabs {
