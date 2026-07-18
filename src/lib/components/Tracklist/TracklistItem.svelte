@@ -4,7 +4,7 @@
   import { formatSeconds } from "$lib/player/format";
   import type { AudioItem } from "@toil/vk-audio/types/client/section";
 
-  type Props = {
+  export type Props = {
     audio: AudioItem;
     isSelected?: boolean;
     onclick?: (audio: AudioItem) => Promise<void> | void;
