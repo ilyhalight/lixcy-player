@@ -26,6 +26,8 @@
   import { MalojaScrobbler } from "$lib/scrobbles/maloja";
   import type { ScrobbleItem } from "$lib/scrobbles/base";
   import type { AudioItem } from "@toil/vk-audio/types/client/section";
+  import { formatSeconds } from "$lib/player/format";
+  import TracklistItem from "$lib/components/Tracklist/TracklistItem.svelte";
 
   let tabs: {
     name: string;
@@ -83,17 +85,6 @@
       await scrobble();
     })();
   });
-
-  // i guess DurationFormat have bad compatibility
-  function formatSeconds(secs: number) {
-    const rounded = Math.round(secs);
-
-    return (
-      `${Math.floor(rounded / 60)}`.padStart(2, "0") +
-      ":" +
-      `${rounded % 60}`.padStart(2, "0")
-    );
-  }
 
   async function getPageData(sectionId?: string) {
     const sections = await LixcyRelay.getSections();
@@ -481,30 +472,8 @@
     {:else}
       <ul class="tracklist">
         {#each data.section.audios as audio}
-          <li
-            class="tracklist-item"
-            class:selected={audio.id === selectedAudio?.id}
-          >
-            <Button
-              data-id="tracklist-item"
-              square={true}
-              size="m"
-              variant={audio.id === selectedAudio?.id ? "tonal" : "elevated"}
-              onclick={async () => await changeSource(audio)}
-              ><div class="tracklist-item__image-wrapper">
-                <img
-                  class="tracklist-item__image"
-                  src={audio.thumbnail.photo_68}
-                  alt="track thumbnail"
-                />
-              </div>
-              <ListItem headline={audio.title} overline={audio.artist}
-              ></ListItem>
-              <p class="tracklist-item__duration">
-                {formatSeconds(audio.duration)}
-              </p>
-            </Button>
-          </li>
+          {@const isSelected = audio.id === selectedAudio?.id}
+          <TracklistItem {audio} {isSelected} onclick={changeSource} />
         {/each}
       </ul>
     {/if}
@@ -787,35 +756,16 @@
     list-style: none;
   }
 
-  .tracklist-item > :global([data-id="tracklist-item"]) {
-    width: 100%;
-    justify-content: start;
-    text-align: left;
-  }
-
-  .tracklist-item__image-wrapper,
   .player-image__wrapper {
     width: 48px;
     min-width: 48px;
     height: 48px;
   }
 
-  .tracklist-item__image,
   .player-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: var(--m3-shape-medium);
-  }
-
-  .tracklist-item__duration {
-    margin-left: auto;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--m3c-on-surface-variant);
-  }
-
-  .tracklist-item.selected .tracklist-item__duration {
-    color: var(--m3c-primary);
   }
 </style>
