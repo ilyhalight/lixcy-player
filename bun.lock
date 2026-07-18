@@ -9,9 +9,7 @@
         "@elysia/openapi": "^1.4.15",
         "@tauri-apps/api": "^2",
         "@tauri-apps/plugin-opener": "^2",
-        "@toil/vk-audio": "^0.0.3",
-        "@vime/core": "^5.4.1",
-        "@vime/svelte": "^5.4.1",
+        "@toil/vk-audio": "^0.0.4",
         "elysia": "^1.4.29",
         "hls.js": "^1.6.16",
         "vidstack": "^1.15.6",
@@ -198,8 +196,6 @@
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "https://registry.nirel.cc/npm/@standard-schema/spec/-/spec-1.1.0.tgz", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
-    "@stencil/core": ["@stencil/core@2.5.2", "https://registry.nirel.cc/npm/@stencil/core/-/core-2.5.2.tgz", { "bin": { "stencil": "bin/stencil" } }, "sha512-bgjPXkSzzg1WnTgVUm6m5ZzpKt602WmA/QljODAW1xVN40OHJdbGblzF/F6MFzqv2c5Cy30CB41arc8qADIdcQ=="],
-
     "@sveltejs/acorn-typescript": ["@sveltejs/acorn-typescript@1.0.10", "https://registry.nirel.cc/npm/@sveltejs/acorn-typescript/-/acorn-typescript-1.0.10.tgz", { "peerDependencies": { "acorn": "^8.9.0" } }, "sha512-4WfKk68eTih+MiJD4fSbxN7E8kVBmTMPWHUPYjvl2N0rMs53YLTT8/YjKU5Dtnz5LqDjl7LEw4U7lXR2W3J5WA=="],
 
     "@sveltejs/adapter-static": ["@sveltejs/adapter-static@3.0.10", "https://registry.nirel.cc/npm/@sveltejs/adapter-static/-/adapter-static-3.0.10.tgz", { "peerDependencies": { "@sveltejs/kit": "^2.0.0" } }, "sha512-7D9lYFWJmB7zxZyTE/qxjksvMqzMuYrrsyh1f4AlZqeZeACPRySjbC3aFiY55wb1tWUaKOQG9PVbm74JcN2Iew=="],
@@ -240,7 +236,7 @@
 
     "@tauri-apps/plugin-opener": ["@tauri-apps/plugin-opener@2.5.4", "https://registry.nirel.cc/npm/@tauri-apps/plugin-opener/-/plugin-opener-2.5.4.tgz", { "dependencies": { "@tauri-apps/api": "^2.11.0" } }, "sha512-1HnPkb+AmgO29HBazm4uPLKB+r7zzcTBW1d0fyYp1uP+jwtpoiNDGKMMzz58SFp49nOIrxdE3aUJtT57lfO9CQ=="],
 
-    "@toil/vk-audio": ["@toil/vk-audio@0.0.3", "https://registry.nirel.cc/npm/@toil/vk-audio/-/vk-audio-0.0.3.tgz", {}, "sha512-+qWKKCbMSaK4E0Edw/wOpYX7Z/qLYi7hVvC5uhP1pblyqO2mxvynDlxsOOb3rJlXGPDTq7t1uMECpCcVHhmbMA=="],
+    "@toil/vk-audio": ["@toil/vk-audio@0.0.4", "https://registry.nirel.cc/npm/@toil/vk-audio/-/vk-audio-0.0.4.tgz", {}, "sha512-QmzXY8nEXGe5svd8QtgiXvsO7C8ld7z5TW/9ff0mTK+dsXxcnXz9T1IFCebZzIOGkWjvvBoJ7qJzNokg4SLD5w=="],
 
     "@tokenizer/inflate": ["@tokenizer/inflate@0.4.1", "https://registry.nirel.cc/npm/@tokenizer/inflate/-/inflate-0.4.1.tgz", { "dependencies": { "debug": "^4.4.3", "token-types": "^6.1.1" } }, "sha512-2mAv+8pkG6GIZiF1kNg1jAjh27IDxEPKwdGul3snfztFerfPGI1LjDezZp3i7BElXompqEtPmoPx6c2wgtWsOA=="],
 
@@ -252,15 +248,9 @@
 
     "@types/estree": ["@types/estree@1.0.9", "https://registry.nirel.cc/npm/@types/estree/-/estree-1.0.9.tgz", {}, "sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg=="],
 
-    "@types/fscreen": ["@types/fscreen@1.0.4", "https://registry.nirel.cc/npm/@types/fscreen/-/fscreen-1.0.4.tgz", {}, "sha512-TsjxyAUvlvuQyao9vNk0yES4nY07K9xoAbkhgXU948JG39EqlLxniWuW9OiZde9Q8ACSpu3fmbXXRAfb/l/HqQ=="],
-
     "@types/node": ["@types/node@26.1.0", "https://registry.nirel.cc/npm/@types/node/-/node-26.1.0.tgz", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-O0A1G3xPGy4w7AgQdAQYUlQ+BKk2Oovw8eRpofyp5KdBZULnbe+WqaOVNrm705SHphCiG4XHsACrSmPu1f+Kgw=="],
 
     "@types/trusted-types": ["@types/trusted-types@2.0.7", "https://registry.nirel.cc/npm/@types/trusted-types/-/trusted-types-2.0.7.tgz", {}, "sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw=="],
-
-    "@vime/core": ["@vime/core@5.4.1", "https://registry.nirel.cc/npm/@vime/core/-/core-5.4.1.tgz", { "dependencies": { "@stencil/core": "2.5.2", "@types/fscreen": "^1.0.1", "fscreen": "^1.2.0", "mitt": "^3.0.0", "stencil-wormhole": "^3.4.1" } }, "sha512-ZFpV3xqZJ5tvh5rZOYKRh8zFzNIKr2ZcK6L75nJjFjbWt/ZmFF2nMBxtD9/hC4Xjk9v7hp1+P9cmctL674VFgA=="],
-
-    "@vime/svelte": ["@vime/svelte@5.4.1", "https://registry.nirel.cc/npm/@vime/svelte/-/svelte-5.4.1.tgz", { "peerDependencies": { "@vime/core": "5.4.1", "svelte": "^3.0.0 || ^4.0.0" } }, "sha512-I0wnPpfkGIsx8149z32nAVBZ2YTjLTLrpnTFNs+6yV07ynvgEDvfTQEa3F6cx4XDerDROBk3nkpB6W6dtdt52Q=="],
 
     "acorn": ["acorn@8.17.0", "https://registry.nirel.cc/npm/acorn/-/acorn-8.17.0.tgz", { "bin": { "acorn": "bin/acorn" } }, "sha512-xRQbDb9BnwDafYNn6Vwl839DYVjqXYb1XVGtWAZ1kcDc6iwAL4hg3B1dZlRiuENFeO2H53gFG3in621AdERVAg=="],
 
@@ -330,8 +320,6 @@
 
     "memoirist": ["memoirist@0.4.0", "https://registry.nirel.cc/npm/memoirist/-/memoirist-0.4.0.tgz", {}, "sha512-zxTgA0mSYELa66DimuNQDvyLq36AwDlTuVRbnQtB+VuTcKWm5Qc4z3WkSpgsFWHNhexqkIooqpv4hdcqrX5Nmg=="],
 
-    "mitt": ["mitt@3.0.1", "https://registry.nirel.cc/npm/mitt/-/mitt-3.0.1.tgz", {}, "sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw=="],
-
     "mri": ["mri@1.2.0", "https://registry.nirel.cc/npm/mri/-/mri-1.2.0.tgz", {}, "sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA=="],
 
     "mrmime": ["mrmime@2.0.1", "https://registry.nirel.cc/npm/mrmime/-/mrmime-2.0.1.tgz", {}, "sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ=="],
@@ -363,8 +351,6 @@
     "sirv": ["sirv@3.0.2", "https://registry.nirel.cc/npm/sirv/-/sirv-3.0.2.tgz", { "dependencies": { "@polka/url": "^1.0.0-next.24", "mrmime": "^2.0.0", "totalist": "^3.0.0" } }, "sha512-2wcC/oGxHis/BoHkkPwldgiPSYcpZK3JU28WoMVv55yHJgcZ8rlXvuG9iZggz+sU1d4bRgIGASwyWqjxu3FM0g=="],
 
     "source-map-js": ["source-map-js@1.2.1", "https://registry.nirel.cc/npm/source-map-js/-/source-map-js-1.2.1.tgz", {}, "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA=="],
-
-    "stencil-wormhole": ["stencil-wormhole@3.4.1", "https://registry.nirel.cc/npm/stencil-wormhole/-/stencil-wormhole-3.4.1.tgz", {}, "sha512-ppYTcWTJnIl4ZAKwF39LTA9f/ypHfbVefsHdN2hpMQGrR57wt1TieZo9tlCM/r1Y4SFiZ5yz/cjho564C921Xw=="],
 
     "strtok3": ["strtok3@10.3.5", "https://registry.nirel.cc/npm/strtok3/-/strtok3-10.3.5.tgz", { "dependencies": { "@tokenizer/token": "^0.3.0" } }, "sha512-ki4hZQfh5rX0QDLLkOCj+h+CVNkqmp/CMf8v8kZpkNVK6jGQooMytqzLZYUVYIZcFZ6yDB70EfD8POcFXiF5oA=="],
 
