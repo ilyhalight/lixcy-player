@@ -29,7 +29,6 @@ Now, **lixcy player** supports:
 
 ## Planned
 
-- [!] Split `+page.svelte` to components
 - transitions between tracks like in Spotify
 - supports set a like to tracks
 - Discord RPC

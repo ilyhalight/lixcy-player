@@ -138,6 +138,7 @@
     bind:isScrobbled
     bind:volume
     bind:sliderVolume
+    bind:playingTime
     {changeSource}
     {selectedAudio}
     {prevAudio}
