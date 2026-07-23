@@ -8,15 +8,16 @@
     audios: AudioItem[];
     selectedAudioId?: number;
     onclick?: TracklistItemProps["onclick"];
+    onlikeToggle: TracklistItemProps["onlikeToggle"];
   };
 
-  let { audios, selectedAudioId, onclick }: Props = $props();
+  let { audios, selectedAudioId, onclick, onlikeToggle }: Props = $props();
 </script>
 
 <ul class="tracklist">
   {#each audios as audio}
     {@const isSelected = audio.id === selectedAudioId}
-    <TracklistItem {audio} {isSelected} {onclick} />
+    <TracklistItem {audio} {isSelected} {onclick} {onlikeToggle} />
   {/each}
 </ul>
 

@@ -1,12 +1,15 @@
 <script lang="ts">
-  import { Tabs, LoadingIndicator, Card } from "m3-svelte";
+  import { Tabs, LoadingIndicator, Card, TextFieldOutlined } from "m3-svelte";
   import "vidstack/player";
 
   import { LixcyRelay } from "$lib/sources/relay";
   import type { AudioItem } from "@toil/vk-audio/types/client/section";
   import Tracklist from "$lib/components/Tracklist/Tracklist.svelte";
   import Player from "$lib/components/Player/Player.svelte";
+  import iconSearch from "@ktibow/iconset-material-symbols/search";
+
   import { MediaRemoteControl } from "vidstack";
+  import { debounce } from "$lib/utils";
 
   const remote = new MediaRemoteControl();
 
@@ -15,7 +18,10 @@
     value: string;
   }[] = $state([]);
   let tab: string = $state("");
+  let prevTab = $state("");
   let currentTab = $derived(tabs.find((t) => t.value === tab));
+  // svelte-ignore state_referenced_locally
+  let prevCurrentTab = $state(currentTab);
 
   const UNAVAILABLE_TABS = [
     "PUldVA8FR0RzSVNUUEwbCikZDFQZFlJEfFpFVA0WUVRyXVFEDAZSUzs",
@@ -34,8 +40,11 @@
   let volume = $derived(sliderVolume / 100);
 
   let playingTime = $state(0);
+  let search = $state("");
+  let isSearchResult = $state(false);
 
   let audioList: undefined | AudioItem[] = $state();
+  let prevAudioList: undefined | AudioItem[] = $state();
   let currentAudioIdx = $derived(
     audioList?.findIndex((audioItem) => audioItem.id === selectedAudio?.id) ??
       0,
@@ -49,6 +58,28 @@
       ? `${selectedAudio.artist} - ${selectedAudio.title}`
       : `Lixcy Player`,
   );
+
+  async function searchAudio(query: string) {
+    const result = await LixcyRelay.searchAudio(query);
+    const isEmptyResult = !result || (result && !result.audios.length);
+    if (isEmptyResult) {
+      isSearchResult = false;
+      tab = prevTab;
+      currentTab = prevCurrentTab;
+      audioList = prevAudioList;
+      return;
+    }
+
+    if (!isSearchResult) {
+      prevTab = tab;
+      prevAudioList = audioList;
+      prevCurrentTab = currentTab;
+    }
+
+    currentTab = undefined;
+    isSearchResult = true;
+    audioList = result.audios;
+  }
 
   async function changeSource(audio: AudioItem) {
     const player = remote.getPlayer(mediaPlayer);
@@ -125,6 +156,14 @@
 
     return data;
   }
+
+  const onSearch = async () => {
+    await searchAudio(search);
+  };
+
+  const onSearchInputStop = debounce(async () => {
+    await onSearch();
+  }, 500);
 </script>
 
 <svelte:head>
@@ -157,19 +196,36 @@
       <Tabs items={data.tabs} bind:tab />
     </div>
 
+    <div class="player-search">
+      <TextFieldOutlined
+        label="Search..."
+        trailing={{
+          icon: iconSearch,
+          onclick: onSearch,
+        }}
+        bind:value={search}
+        enter={onSearch}
+        oninput={onSearchInputStop}
+      />
+    </div>
+
     <Card variant="elevated">
       <!-- <h1>{data.section.title}</h1> -->
       <h1>
-        {currentTab?.name}
+        {currentTab?.name ?? "All tracks"}
       </h1>
     </Card>
     {#if UNAVAILABLE_TABS.includes(currentTab?.value!)}
       <p>This tab isn't supported yet :c</p>
     {:else}
       <Tracklist
-        audios={data.section.audios}
+        audios={audioList ?? data.section.audios}
         selectedAudioId={selectedAudio?.id}
         onclick={changeSource}
+        onlikeToggle={async (audio: AudioItem, isLiked: boolean) => {
+          await LixcyRelay.toggleLike(audio.id, audio.ownerId, isLiked);
+          audio.isLiked = !isLiked;
+        }}
       />
     {/if}
   {/await}
@@ -209,7 +265,16 @@
     justify-content: center;
   }
 
+  .player-search {
+    display: flex;
+  }
+
+  .player-search > :global(.m3-container) {
+    width: 100%;
+  }
+
   .player-tabs {
+    display: flex;
     overflow-x: auto;
   }
 

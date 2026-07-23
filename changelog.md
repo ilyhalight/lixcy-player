@@ -1,3 +1,8 @@
+# 0.0.3
+
+- Added audio search
+- Added audio like/unlike support
+
 # 0.0.2
 
 - Splitted `+page.svelte` to components

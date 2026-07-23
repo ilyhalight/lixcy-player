@@ -24,4 +24,56 @@ export abstract class LixcyRelay {
 
     return data;
   }
+
+  static async searchAudio(query: string) {
+    const { data, error } = await app.api.vk.audio.search.get({
+      query: {
+        query,
+      },
+    });
+    if (error) {
+      console.error(error);
+      return false;
+    }
+
+    return data;
+  }
+
+  static async addAudio(audioId: number, ownerId: number) {
+    const route = app.api.vk
+      .audio({ ownerId })({
+        audioId,
+      })
+      .post();
+    const { data, error } = await route;
+
+    if (error) {
+      console.error(error);
+      return false;
+    }
+    return data;
+  }
+
+  static async deleteAudio(audioId: number, ownerId: number) {
+    const route = app.api.vk
+      .audio({ ownerId })({
+        audioId,
+      })
+      .delete();
+    const { data, error } = await route;
+
+    if (error) {
+      console.error(error);
+      return false;
+    }
+    return data;
+  }
+
+  static async toggleLike(audioId: number, ownerId: number, isLiked: boolean) {
+    if (isLiked) {
+      return await this.deleteAudio(audioId, ownerId);
+    }
+
+    return await this.addAudio(audioId, ownerId);
+  }
 }

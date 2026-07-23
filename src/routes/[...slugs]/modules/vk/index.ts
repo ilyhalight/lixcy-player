@@ -21,10 +21,10 @@ const clientOpts: VKAudioOpts = {
 };
 const client = new VKAudio(clientOpts);
 
-export default new Elysia().group("/vk/section", (app) =>
+export default new Elysia().group("/vk", (app) =>
   app
     .get(
-      "/",
+      "/section",
       async ({ query: { ownerId } }) => {
         return await client.getSections(ownerId ? String(ownerId) : undefined);
       },
@@ -35,7 +35,7 @@ export default new Elysia().group("/vk/section", (app) =>
       },
     )
     .get(
-      "/:sectionId",
+      "/section/:sectionId",
       async ({ params: { sectionId }, query: { startOffset } }) => {
         return await client.getSection(sectionId, startOffset);
       },
@@ -45,6 +45,42 @@ export default new Elysia().group("/vk/section", (app) =>
         }),
         query: t.Object({
           startOffset: t.Optional(t.String()),
+        }),
+      },
+    )
+    .get(
+      "/audio/search",
+      async ({ query: { query, startOffset } }) => {
+        return await client.searchAudio(query, startOffset);
+      },
+      {
+        query: t.Object({
+          query: t.String(),
+          startOffset: t.Optional(t.Number()),
+        }),
+      },
+    )
+    .post(
+      "/audio/:ownerId/:audioId",
+      async ({ params: { ownerId, audioId } }) => {
+        return await client.add(ownerId, audioId);
+      },
+      {
+        params: t.Object({
+          audioId: t.Number(),
+          ownerId: t.Number(),
+        }),
+      },
+    )
+    .delete(
+      "/audio/:ownerId/:audioId",
+      async ({ params: { ownerId, audioId } }) => {
+        return await client.delete(ownerId, audioId);
+      },
+      {
+        params: t.Object({
+          audioId: t.Number(),
+          ownerId: t.Number(),
         }),
       },
     ),
