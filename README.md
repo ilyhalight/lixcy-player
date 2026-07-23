@@ -24,18 +24,19 @@ Now, **lixcy player** supports:
 - change track to next/prev
 - show track progress with seek support
 - adaptation for different screen formats
+- search audios
+- set like/unlike audios
 
 ![lixcy-player-full](./images/lixcy-player-full.png)
 
 ## Planned
 
 - transitions between tracks like in Spotify
-- supports set a like to tracks
 - Discord RPC
 - Last.fm and Listenbrainz scrobbles support
 - albums
 - see tracks of other peoples
-- search tracks and albums
+- search albums
 - auto generated Mix playlist from sources (like VK Mix, For You and etc)
 - other sources
 
